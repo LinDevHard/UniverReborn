@@ -2,7 +2,7 @@ package com.lindevhard.android.univerrebornlite.di
 
 import androidx.lifecycle.ViewModel
 import com.lindevhard.android.univerrebornlite.ui.activity.MainActivity
-import com.lindevhard.android.univerrebornlite.viewmodel.LauncerViewModel
+import com.lindevhard.android.univerrebornlite.viewmodel.LauncherViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -18,6 +18,6 @@ abstract class ActivityBuilder {
 
     @Binds
     @IntoMap
-    @ViewModelKey(LauncerViewModel::class)
-    internal abstract fun bindLauncerViewModel(viewModel: LauncerViewModel): ViewModel
+    @ViewModelKey(LauncherViewModel::class)
+    internal abstract fun bindLauncerViewModel(viewModel: LauncherViewModel): ViewModel
 }
