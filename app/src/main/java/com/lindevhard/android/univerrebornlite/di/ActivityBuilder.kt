@@ -19,5 +19,5 @@ abstract class ActivityBuilder {
     @Binds
     @IntoMap
     @ViewModelKey(LauncherViewModel::class)
-    internal abstract fun bindLauncerViewModel(viewModel: LauncherViewModel): ViewModel
+    internal abstract fun bindAuthViewModel(viewModel: LauncherViewModel): ViewModel
 }
