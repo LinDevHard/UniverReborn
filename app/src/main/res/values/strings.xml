@@ -5,5 +5,26 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login_button">Login</string>
     <string name="pass_hint">Univer Password</string>
-    <string name="userprofile">UserProfile</string>
+    <string name="user_profile">UserProfile</string>
+    <string name="error_auth_message">Invalid username or password</string>
+    <string name="demo_card_text">TEST</string>
+
+    <string name="profile_sex">Пол</string>
+    <string name="profile_student_id">ID студента</string>
+    <string name="profile_grade_id">Зачетка</string>
+    <string name="profile_patronymic">Отчество</string>
+    <string name="profile_edu_form">Форма обучения</string>
+    <string name="profile_edu_level">Уровень обучнения</string>
+    <string name="profile_lang_div">Отделение</string>
+    <string name="profile_stage">Ступень обучения</string>
+    <string name="profile_for_lang">Иностранный язык</string>
+    <string name="profile_course_num">Номер курса</string>
+    <string name="profile_grant_date">Дата выдачи гранта</string>
+    <string name="profile_grant_num">Номер гранта</string>
+    <string name="profile_status">Статус</string>
+    <string name="profile_surname">Фамилия</string>
+    <string name="profile_name">Имя</string>
+    <string name="profile_university">Универ</string>
+    <string name="university_kstu_code">KSTU</string>
+
 </resources>
