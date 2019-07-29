@@ -2,14 +2,15 @@ package com.lindevhard.android.univerrebornlite.ui.fragment
 
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.lindevhard.android.univerrebornlite.R
+import com.lindevhard.android.univerrebornlite.utils.showError
 import com.lindevhard.android.univerrebornlite.utils.viewModelProvider
 import com.lindevhard.android.univerrebornlite.viewmodel.AuthViewModel
 import dagger.android.support.DaggerFragment
@@ -34,14 +35,28 @@ class AuthFragment : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = viewModelProvider(viewModelFactory)
-
         login_btn.setOnClickListener {
             viewModel.authRequest(input_login.text.toString(), input_password.text.toString())
         }
 
         viewModel.login.observe(this, Observer { isLogin ->
-            if (isLogin) Log.d("AuthFragment", "Good Work") else
-                Log.d("AuthFragment", "Something don't work")
+            when (isLogin) {
+                true -> findNavController().navigate(R.id.profileFragment)
+                false -> showError(R.string.error_auth_message)
+            }
+        })
+
+        viewModel.progress.observe(this, Observer { isLoading ->
+            when (isLoading) {
+                true -> {
+                    progressBar.visibility = View.VISIBLE
+                    login_btn.isClickable = false
+                }
+                false -> {
+                    progressBar.visibility = View.GONE
+                    login_btn.isClickable = true
+                }
+            }
         })
 
     }

@@ -20,15 +20,12 @@ class AuthViewModel @Inject constructor(private val repository: AuthRepository) 
 
     init {
         //TODO: Create network checker
-        isProcess.value = false
-        isLogin.value = false
+
     }
 
     fun authRequest(login: String, password: String) {
-        if (!isProcess.value!!) {
             Log.d("AuthViewModel", "Send Request")
             sendAuthRequest(login, password)
-        }
     }
 
     private fun sendAuthRequest(login: String, password: String) {
