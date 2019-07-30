@@ -3,12 +3,10 @@ package com.lindevhard.android.univerrebornlite.di
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import com.google.gson.GsonBuilder
+import com.lindevhard.android.univerrebornlite.api.ExamSchedule
 import com.lindevhard.android.univerrebornlite.api.ProfileData
 import com.lindevhard.android.univerrebornlite.repository.AuthRepository
-import com.lindevhard.android.univerrebornlite.utils.API_URL
-import com.lindevhard.android.univerrebornlite.utils.AddCookiesInterceptor
-import com.lindevhard.android.univerrebornlite.utils.ProfileDataDeserializer
-import com.lindevhard.android.univerrebornlite.utils.ReceivedCookiesInterceptor
+import com.lindevhard.android.univerrebornlite.utils.*
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -67,12 +65,13 @@ class NetworkModule {
     @Singleton
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
-        val profileDeserializer =
-                GsonBuilder().registerTypeAdapter(ProfileData::class.java, ProfileDataDeserializer()).create()
+        val customDeserializer =
+                GsonBuilder().registerTypeAdapter(ProfileData::class.java, ProfileDataDeserializer())
+                        .registerTypeAdapter(ExamSchedule::class.java, ExamScheduleDeserializer()).create()
         return Retrofit.Builder()
                 .baseUrl(API_URL)
                 .client(okHttpClient)
-                .addConverterFactory(GsonConverterFactory.create(profileDeserializer))
+                .addConverterFactory(GsonConverterFactory.create(customDeserializer))
                 .build()
     }
 
