@@ -1,6 +1,10 @@
 package com.lindevhard.android.univerrebornlite.utils
 
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -43,4 +47,8 @@ fun String.split(): String {
     if (index == -1)
         return this
     return this.substring(index + 1)
+}
+
+fun ViewGroup.inflate(@LayoutRes layoutRes: Int, attachToRoot: Boolean = false): View {
+    return LayoutInflater.from(context).inflate(layoutRes, this, attachToRoot)
 }
