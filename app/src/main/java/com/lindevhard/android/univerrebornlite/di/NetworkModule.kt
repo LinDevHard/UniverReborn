@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import com.google.gson.GsonBuilder
 import com.lindevhard.android.univerrebornlite.api.ExamSchedule
+import com.lindevhard.android.univerrebornlite.api.NewsList
 import com.lindevhard.android.univerrebornlite.api.ProfileData
 import com.lindevhard.android.univerrebornlite.repository.AuthRepository
 import com.lindevhard.android.univerrebornlite.utils.*
@@ -65,13 +66,17 @@ class NetworkModule {
     @Singleton
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
-        val customDeserializer =
-                GsonBuilder().registerTypeAdapter(ProfileData::class.java, ProfileDataDeserializer())
-                        .registerTypeAdapter(ExamSchedule::class.java, ExamScheduleDeserializer()).create()
+        val customDeserializers =
+                GsonBuilder()
+                        .registerTypeAdapter(ProfileData::class.java, ProfileDataDeserializer())
+                        .registerTypeAdapter(ExamSchedule::class.java, ExamScheduleDeserializer())
+                        .registerTypeAdapter(NewsList::class.java, NewsDeserializer())
+                        .create()
+
         return Retrofit.Builder()
                 .baseUrl(API_URL)
                 .client(okHttpClient)
-                .addConverterFactory(GsonConverterFactory.create(customDeserializer))
+                .addConverterFactory(GsonConverterFactory.create(customDeserializers))
                 .build()
     }
 
