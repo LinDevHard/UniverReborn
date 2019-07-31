@@ -3,9 +3,11 @@ package com.lindevhard.android.univerrebornlite.di
 import androidx.lifecycle.ViewModel
 import com.lindevhard.android.univerrebornlite.ui.fragment.AuthFragment
 import com.lindevhard.android.univerrebornlite.ui.fragment.ExamScheduleFragment
+import com.lindevhard.android.univerrebornlite.ui.fragment.NewsFragment
 import com.lindevhard.android.univerrebornlite.ui.fragment.ProfileFragment
 import com.lindevhard.android.univerrebornlite.viewmodel.AuthViewModel
 import com.lindevhard.android.univerrebornlite.viewmodel.ExamScheduleViewModel
+import com.lindevhard.android.univerrebornlite.viewmodel.NewsViewModel
 import com.lindevhard.android.univerrebornlite.viewmodel.ProfileViewModel
 import dagger.Binds
 import dagger.Module
@@ -21,7 +23,10 @@ abstract class FragmentBuilderModule {
     internal abstract fun contibutesProfileFragment(): ProfileFragment
 
     @ContributesAndroidInjector
-    internal abstract fun contibutesExamScheduleViewModel(): ExamScheduleFragment
+    internal abstract fun contibutesExamScheduleFragment(): ExamScheduleFragment
+
+    @ContributesAndroidInjector
+    internal abstract fun contibutesNewsFragment(): NewsFragment
 
     @Binds
     @IntoMap
@@ -37,4 +42,9 @@ abstract class FragmentBuilderModule {
     @IntoMap
     @ViewModelKey(ExamScheduleViewModel::class)
     internal abstract fun bindExamScheduleViewModel(viewModel: ExamScheduleViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(NewsViewModel::class)
+    internal abstract fun bindNewsViewModel(viewModel: NewsViewModel): ViewModel
 }
