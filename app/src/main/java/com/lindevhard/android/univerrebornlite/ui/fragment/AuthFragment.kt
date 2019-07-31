@@ -41,7 +41,7 @@ class AuthFragment : DaggerFragment() {
 
         viewModel.login.observe(this, Observer { isLogin ->
             when (isLogin) {
-                true -> findNavController().navigate(R.id.examScheduleFragment)
+                true -> findNavController().navigate(R.id.newsFragment)
                 false -> showError(R.string.error_auth_message)
             }
         })
@@ -58,7 +58,6 @@ class AuthFragment : DaggerFragment() {
                 }
             }
         })
-
     }
 }
 

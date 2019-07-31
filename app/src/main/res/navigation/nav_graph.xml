@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_authFragment_to_examScheduleFragment"
             app:destination="@id/examScheduleFragment" />
+        <action
+            android:id="@+id/action_authFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -22,4 +25,8 @@
         android:id="@+id/examScheduleFragment"
         android:name="com.lindevhard.android.univerrebornlite.ui.fragment.ExamScheduleFragment"
         android:label="ExamScheduleFragment" />
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.lindevhard.android.univerrebornlite.ui.fragment.NewsFragment"
+        android:label="NewsFragment" />
 </navigation>
