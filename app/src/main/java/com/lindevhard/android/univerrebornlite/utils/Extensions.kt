@@ -1,5 +1,8 @@
 package com.lindevhard.android.univerrebornlite.utils
 
+import android.os.Build
+import android.text.Html
+import android.text.Spanned
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,4 +54,14 @@ fun String.split(): String {
 
 fun ViewGroup.inflate(@LayoutRes layoutRes: Int, attachToRoot: Boolean = false): View {
     return LayoutInflater.from(context).inflate(layoutRes, this, attachToRoot)
+}
+
+
+fun String.toSpanned(): Spanned {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        return Html.fromHtml(this, Html.FROM_HTML_MODE_LEGACY)
+    } else {
+        @Suppress("DEPRECATION")
+        return Html.fromHtml(this)
+    }
 }

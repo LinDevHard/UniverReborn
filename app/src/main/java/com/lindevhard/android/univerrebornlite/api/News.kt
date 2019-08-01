@@ -6,6 +6,7 @@ data class NewsList(
 
 data class News(
         val title: String,
+        val id: Int,
         val body: String,
         val date: String
 )
