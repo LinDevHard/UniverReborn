@@ -1,5 +1,6 @@
 package com.lindevhard.android.univerrebornlite.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -23,6 +24,8 @@ class NewsViewModel @Inject constructor(private val repo: NewsRepository) : View
                 repo.getNews()
             }.onSuccess {
                 newsData.value = it.data
+            }.onFailure {
+                Log.d("NewsViewModel", it.toString())
             }
         }
     }

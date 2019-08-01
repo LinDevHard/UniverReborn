@@ -14,14 +14,12 @@ class NewsDeserializer : JsonDeserializer<NewsList> {
         val rootJson = json.asJsonArray
         val data = mutableListOf<News>()
 
-        for (element in rootJson) {
-            data += context.deserialize<News>(element, News::class.java)
-        }
+        rootJson.map { data += deserializeNews(it, context) }
 
-        /*  for (element in data)
-              if (element.body.isEmpty())
-                  data.remove(element)
-          Log.d("NewsDeserializer", data.toString())
-  */        return NewsList(data)
+        return NewsList(data.filter { it.body.isNotEmpty() })
     }
+
+    private fun deserializeNews(jsonElement: JsonElement, context: JsonDeserializationContext) =
+            context.deserialize<News>(jsonElement, News::class.java)
+
 }
