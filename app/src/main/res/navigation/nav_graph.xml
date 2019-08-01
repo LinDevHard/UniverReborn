@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graf"
+    android:id="@+id/nav_graph"
     app:startDestination="@id/authFragment">
     <fragment
         android:id="@+id/authFragment"
@@ -28,5 +28,24 @@
     <fragment
         android:id="@+id/newsFragment"
         android:name="com.lindevhard.android.univerrebornlite.ui.fragment.NewsFragment"
-        android:label="NewsFragment" />
+        android:label="NewsFragment">
+        <action
+            android:id="@+id/action_newsFragment_to_newsDetailFragment"
+            app:destination="@id/newsDetailFragment">
+            <argument
+                android:name="newsId"
+                android:defaultValue="0"
+                app:argType="integer" />
+        </action>
+
+    </fragment>
+    <fragment
+        android:id="@+id/newsDetailFragment"
+        android:name="com.lindevhard.android.univerrebornlite.ui.fragment.NewsDetailFragment"
+        android:label="NewsDetailFragment">
+        <argument
+            android:name="newsId"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
 </navigation>

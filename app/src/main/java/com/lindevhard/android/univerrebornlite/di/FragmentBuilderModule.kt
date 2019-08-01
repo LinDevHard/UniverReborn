@@ -1,14 +1,8 @@
 package com.lindevhard.android.univerrebornlite.di
 
 import androidx.lifecycle.ViewModel
-import com.lindevhard.android.univerrebornlite.ui.fragment.AuthFragment
-import com.lindevhard.android.univerrebornlite.ui.fragment.ExamScheduleFragment
-import com.lindevhard.android.univerrebornlite.ui.fragment.NewsFragment
-import com.lindevhard.android.univerrebornlite.ui.fragment.ProfileFragment
-import com.lindevhard.android.univerrebornlite.viewmodel.AuthViewModel
-import com.lindevhard.android.univerrebornlite.viewmodel.ExamScheduleViewModel
-import com.lindevhard.android.univerrebornlite.viewmodel.NewsViewModel
-import com.lindevhard.android.univerrebornlite.viewmodel.ProfileViewModel
+import com.lindevhard.android.univerrebornlite.ui.fragment.*
+import com.lindevhard.android.univerrebornlite.viewmodel.*
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -27,6 +21,9 @@ abstract class FragmentBuilderModule {
 
     @ContributesAndroidInjector
     internal abstract fun contibutesNewsFragment(): NewsFragment
+
+    @ContributesAndroidInjector
+    internal abstract fun contibutesNewsDetailFragment(): NewsDetailFragment
 
     @Binds
     @IntoMap
@@ -47,4 +44,9 @@ abstract class FragmentBuilderModule {
     @IntoMap
     @ViewModelKey(NewsViewModel::class)
     internal abstract fun bindNewsViewModel(viewModel: NewsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(NewsDetailViewModel::class)
+    internal abstract fun bindNewsDetailViewModel(viewModel: NewsDetailViewModel): ViewModel
 }
