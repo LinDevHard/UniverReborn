@@ -6,9 +6,10 @@ import retrofit2.Retrofit
 import javax.inject.Inject
 
 class NewsRepository @Inject constructor(remoteClient: Retrofit) {
-    private val examService = remoteClient.create(NewsApi::class.java)
+    private val newsService = remoteClient.create(NewsApi::class.java)
 
-    suspend fun getNews() = examService.getNews()
+    suspend fun getNews() = newsService.getNews()
+
     suspend fun getNewsById(id: Int): News? {
         val response = getNews()
         if (response.code != 0)

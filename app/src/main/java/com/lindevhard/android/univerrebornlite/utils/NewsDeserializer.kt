@@ -18,7 +18,10 @@ class NewsDeserializer : JsonDeserializer<NewsList> {
             data += context.deserialize<News>(element, News::class.java)
         }
 
-        return NewsList(data)
+        /*  for (element in data)
+              if (element.body.isEmpty())
+                  data.remove(element)
+          Log.d("NewsDeserializer", data.toString())
+  */        return NewsList(data)
     }
-
 }
