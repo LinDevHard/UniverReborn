@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_authFragment_to_newsFragment"
             app:destination="@id/newsFragment" />
+        <action
+            android:id="@+id/action_authFragment_to_attendanceFragment"
+            app:destination="@id/attendanceFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -48,4 +51,8 @@
             android:defaultValue="0"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/attendanceFragment"
+        android:name="com.lindevhard.android.univerrebornlite.ui.fragment.AttendanceFragment"
+        android:label="AttendanceFragment" />
 </navigation>

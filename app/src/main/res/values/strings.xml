@@ -26,5 +26,6 @@
     <string name="profile_name">Имя</string>
     <string name="profile_university">Универ</string>
     <string name="university_kstu_code">KSTU</string>
+    <string name="expand_subject_card">Expand subject card</string>
 
 </resources>
