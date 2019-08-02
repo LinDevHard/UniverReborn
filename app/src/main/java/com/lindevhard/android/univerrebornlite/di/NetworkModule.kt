@@ -3,6 +3,7 @@ package com.lindevhard.android.univerrebornlite.di
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import com.google.gson.GsonBuilder
+import com.lindevhard.android.univerrebornlite.api.AttendanceList
 import com.lindevhard.android.univerrebornlite.api.ExamSchedule
 import com.lindevhard.android.univerrebornlite.api.NewsList
 import com.lindevhard.android.univerrebornlite.api.ProfileData
@@ -71,6 +72,7 @@ class NetworkModule {
                         .registerTypeAdapter(ProfileData::class.java, ProfileDataDeserializer())
                         .registerTypeAdapter(ExamSchedule::class.java, ExamScheduleDeserializer())
                         .registerTypeAdapter(NewsList::class.java, NewsDeserializer())
+                        .registerTypeAdapter(AttendanceList::class.java, AttendanceDeserializer())
                         .create()
 
         return Retrofit.Builder()
