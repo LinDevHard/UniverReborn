@@ -13,10 +13,10 @@ import javax.inject.Inject
 class AuthViewModel @Inject constructor(private val repository: AuthRepository) : ViewModel() {
     private val TAG = "AuthViewModel"
     private var isProcess = MutableLiveData<Boolean>()
-    private var isLogin = MutableLiveData<Boolean>()
+    private var _isLogin = MutableLiveData<Boolean>()
 
     val progress: LiveData<Boolean> = isProcess
-    val login: LiveData<Boolean> = isLogin
+    val isLogin: LiveData<Boolean> = _isLogin
 
     init {
         //TODO: Create network checker
@@ -34,11 +34,23 @@ class AuthViewModel @Inject constructor(private val repository: AuthRepository) 
                 isProcess.value = true
                 repository.getAuthData(AuthDataServer(login, password))
             }.onSuccess {
-                isLogin.value = true
+                when (it.code) {
+                    AUTHORIZED -> _isLogin.value = true
+                    ALREADY_AUTHORIZED -> _isLogin.value = true
+                    INCORRECT_LOGIN -> _isLogin.value = false
+                }
+                Log.d("AuthViewModel", it.toString())
             }.onFailure {
-                isLogin.value = false
+                _isLogin.value = false
             }
             isProcess.value = false
         }
     }
+
+    companion object {
+        const val AUTHORIZED = 0
+        const val ALREADY_AUTHORIZED = 1
+        const val INCORRECT_LOGIN = 2
+    }
+
 }

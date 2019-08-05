@@ -16,6 +16,7 @@ class AppModule {
         return application.applicationContext
     }
 
+    @Singleton
     @Provides
     fun providesWifiManager(context: Context): WifiManager =
             context.applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager

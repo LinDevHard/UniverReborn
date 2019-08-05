@@ -16,6 +16,7 @@ class ProfileViewModel @Inject constructor(private val repository: ProfileReposi
     val profile: LiveData<ProfileData> = profileData
 
     init {
+        updateProfile()
     }
 
     fun updateProfile() {
