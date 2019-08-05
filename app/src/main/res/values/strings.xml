@@ -27,5 +27,9 @@
     <string name="profile_university">Универ</string>
     <string name="university_kstu_code">KSTU</string>
     <string name="expand_subject_card">Expand subject card</string>
+    <string name="title_attendance">Журнал</string>
+    <string name="title_examSchedule">Экзамены</string>
+    <string name="title_news">Новости</string>
+    <string name="title_profile">Профиль</string>
 
 </resources>
