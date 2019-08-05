@@ -1,10 +1,43 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/colorAccent</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlActivated">?colorPrimary</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:navigationBarColor">@color/colorPrimary</item>
+        <item name="toolbarStyle">@style/Widget.Toolbar</item>
     </style>
+
+    <style name="AppTheme.Launcher" parent="@style/AppTheme.LightNav"></style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.LightNav" parent="AppTheme.NoActionBar" />
+
+    <style name="AppTheme.PopupTheme" parent="ThemeOverlay.MaterialComponents.Light" />
+
+    <style name="Widget.AppBar" parent="@style/Widget.Design.AppBarLayout">
+        <item name="popupTheme">@style/AppTheme.PopupTheme</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:elevation">8dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="TextAppearance.UniverReborn.ToolbarTitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:fontFamily">@font/work_sans</item>
+    </style>
+
+    <style name="Widget.Toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="titleTextAppearance">@style/TextAppearance.UniverReborn.ToolbarTitle</item>
+        <item name="popupTheme">@style/AppTheme.PopupTheme</item>
+    </style>
+
 </resources>
