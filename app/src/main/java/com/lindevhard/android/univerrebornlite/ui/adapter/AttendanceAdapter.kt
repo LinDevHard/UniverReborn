@@ -29,6 +29,23 @@ class AttendanceAdapter(private val items: List<Attendance>) : RecyclerView.Adap
 
         init {
             containerView.expand.setOnClickListener { expandOrCollapse() }
+            containerView.detail_button.setOnClickListener { increment() }
+        }
+
+        private fun increment() {
+            containerView.progress_rk1.progress += 1
+            containerView.rk1.text = containerView.progress_rk1.progress.toString()
+        }
+
+        fun bind(subject: Attendance) {
+            containerView.title.text = subject.subjectName
+            containerView.period.text = subject.period
+            containerView.type.text = subject.type
+            groupId = subject.groupId
+            containerView.rk1.text = subject.firstRk.toString()
+            containerView.rk2.text = subject.secondRk.toString()
+            containerView.progress_rk1.progress = subject.firstRk
+            containerView.progress_rk2.progress = subject.secondRk
         }
 
         private fun expandOrCollapse() {
@@ -40,15 +57,6 @@ class AttendanceAdapter(private val items: List<Attendance>) : RecyclerView.Adap
                 TransitionManager.beginDelayedTransition(containerView.mainContainer, AutoTransition())
                 detailContainer.visibility = View.GONE
             }
-        }
-
-        fun bind(subject: Attendance) {
-            containerView.title.text = subject.subjectName
-            containerView.period.text = subject.period
-            containerView.type.text = subject.type
-            groupId = subject.groupId
-            containerView.rk1.text = subject.firstRk.toString()
-            containerView.rk2.text = subject.secondRk.toString()
         }
 
     }
