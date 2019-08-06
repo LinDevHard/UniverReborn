@@ -45,6 +45,9 @@ fun Fragment.showError(@StringRes stringId: Int) {
     Toast.makeText(this.context, stringId, Toast.LENGTH_LONG).show()
 }
 
+/**
+ * (SPECIFIC) Extension function for create string without first part
+ */
 fun String.split(): String {
     val index = this.indexOf(":")
     if (index == -1)
@@ -56,7 +59,9 @@ fun ViewGroup.inflate(@LayoutRes layoutRes: Int, attachToRoot: Boolean = false):
     return LayoutInflater.from(context).inflate(layoutRes, this, attachToRoot)
 }
 
-
+/**
+ * Extension function for convert RAW HTML to Spanned String
+ */
 fun String.toSpanned(): Spanned {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
         return Html.fromHtml(this, Html.FROM_HTML_MODE_LEGACY)

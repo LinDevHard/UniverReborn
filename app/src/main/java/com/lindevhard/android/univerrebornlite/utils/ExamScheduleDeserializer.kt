@@ -10,11 +10,15 @@ import java.lang.reflect.Type
 
 class ExamScheduleDeserializer : JsonDeserializer<ExamSchedule> {
     override fun deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): ExamSchedule {
-        Log.d("ExamScheduleDeserialize", json.toString())
         val rootJson = json.asJsonArray
         val data = mutableListOf<Exam>()
+        if (rootJson.size() <= 1) {
+            Log.d("EXAM Schedule DESERL", rootJson.toString())
+
+            return ExamSchedule(data)
+        }
+
         for (element in rootJson) {
-            Log.d("ExamScheduleDeserialize", element.toString())
             data += context.deserialize<Exam>(element, Exam::class.java)
         }
 

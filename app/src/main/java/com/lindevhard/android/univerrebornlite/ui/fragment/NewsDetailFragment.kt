@@ -38,6 +38,8 @@ class NewsDetailFragment : DaggerFragment() {
         viewModel.loadNewsById(newsId)
         viewModel.news.observe(this, Observer { news ->
             if (news != null && news.body.isNotEmpty()) {
+                collapsingToolbar.title = news.title
+                toolbar_date.text = news.date
                 title.text = news.title
                 date.text = news.date
                 baseContent.text = news.body.toSpanned()

@@ -1,6 +1,8 @@
 package com.lindevhard.android.univerrebornlite.utils
 
 import android.content.SharedPreferences
+import android.util.Log
+import okhttp3.HttpUrl
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException
@@ -42,18 +44,28 @@ class ReceivedCookiesInterceptor(private val prefer: SharedPreferences) : Interc
     override fun intercept(chain: Interceptor.Chain): Response {
         val originalResponse = chain.proceed(chain.request())
 
+        if (originalResponse.request().url() == HttpUrl.get(KSTU_LOGIN_URL)) {
+            val memes = prefer.edit()
+            memes.clear()
+            memes.apply()
+        }
         if (originalResponse.headers("Set-Cookie").isNotEmpty()) {
-            val cookies = prefer.getStringSet("PREF_COOKIES", HashSet()) as HashSet<String>
+            val cookies = prefer.getStringSet(PREF_COOKIES, HashSet()) as HashSet<String>
 
             for (header in originalResponse.headers("Set-Cookie")) {
                 cookies.add(header)
             }
 
             val memes = prefer.edit()
-            memes.putStringSet("PREF_COOKIES", cookies).apply()
+            memes.putStringSet(PREF_COOKIES, cookies).apply()
             memes.commit()
+            Log.d("Cookie interceptor", "memes commit")
         }
 
         return originalResponse
+    }
+
+    companion object {
+        const val PREF_COOKIES = "PREF_COOKIES"
     }
 }

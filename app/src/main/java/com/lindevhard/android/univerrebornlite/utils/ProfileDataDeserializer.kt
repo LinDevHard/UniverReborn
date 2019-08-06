@@ -11,15 +11,16 @@ import java.lang.reflect.Type
 
 class ProfileDataDeserializer : JsonDeserializer<ProfileData> {
     override fun deserialize(json: JsonElement, typeOfT: Type?, context: JsonDeserializationContext?): ProfileData {
-        Log.d("ProfileDeserializer", json.toString())
         val rootJsonArray = json.asJsonArray
 
         val personalData = PersonalData()
         val univerData = UniverData()
-
+        if (rootJsonArray.size() <= 1) {
+            Log.d("ProfileDeserializer", rootJsonArray.toString())
+            return ProfileData(univerData, personalData)
+        }
         if (rootJsonArray[0].isJsonArray) {
 
-            Log.d("ProfileDeserializer", rootJsonArray[0].toString())
             val univerJsonArray = rootJsonArray[0].asJsonArray
             univerData.student = univerJsonArray[0].asJsonObject.get("student").asString.split()
             univerData.eduForm = univerJsonArray[1].asJsonObject.get("edu_form").asString.split()

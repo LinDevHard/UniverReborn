@@ -9,6 +9,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import com.lindevhard.android.univerrebornlite.R
+import com.lindevhard.android.univerrebornlite.ui.fragment.AuthFragmentDirections
+import com.lindevhard.android.univerrebornlite.utils.viewModelProvider
+import com.lindevhard.android.univerrebornlite.viewmodel.LauncherViewModel
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
@@ -16,17 +19,21 @@ import javax.inject.Inject
 class MainActivity : DaggerAppCompatActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private lateinit var viewModel: LauncherViewModel
     private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val navController = findNavController(R.id.host_fragment)
+
+        viewModel = viewModelProvider(viewModelFactory)
+        if (viewModel.checkLoggedStatus()) {
+            navController.navigate(AuthFragmentDirections.actionAuthFragmentToAttendanceFragment3())
+        }
+
         setupBottomNavMenu(navController)
-        val toolbar = toolbar
-        appBarConfiguration = AppBarConfiguration(setOf(R.id.newsFragment, R.id.examScheduleFragment,
-                R.id.profileFragment, R.id.attendanceFragment, R.id.authFragment))
-        toolbar.setupWithNavController(navController, appBarConfiguration)
 
         navController.addOnDestinationChangedListener { navController, destination, arguments ->
             when (destination.id) {

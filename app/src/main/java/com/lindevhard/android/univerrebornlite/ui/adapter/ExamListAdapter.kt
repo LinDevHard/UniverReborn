@@ -7,12 +7,12 @@ import com.lindevhard.android.univerrebornlite.R
 import com.lindevhard.android.univerrebornlite.api.Exam
 import com.lindevhard.android.univerrebornlite.utils.inflate
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.exam_list.view.*
+import kotlinx.android.synthetic.main.list_exam.view.*
 
 class ExamListAdapter(private val items: List<Exam>) :
         RecyclerView.Adapter<ExamListAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val inflateView = parent.inflate(R.layout.exam_list, false)
+        val inflateView = parent.inflate(R.layout.list_exam, false)
         return ViewHolder(inflateView)
     }
 

@@ -1,6 +1,5 @@
 package com.lindevhard.android.univerrebornlite.utils
 
-import android.util.Log
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
@@ -10,11 +9,9 @@ import java.lang.reflect.Type
 
 class AttendanceDeserializer : JsonDeserializer<AttendanceList> {
     override fun deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): AttendanceList {
-        Log.d("AttendanceDeserializer", json.toString())
         val rootJson = json.asJsonArray
         val data = mutableListOf<Attendance>()
         for (element in rootJson) {
-            Log.d("AttendanceDeserializer", element.toString())
             if (element.isJsonArray) {
                 val subjectRoot = element.asJsonArray
                 val attendData = Attendance()

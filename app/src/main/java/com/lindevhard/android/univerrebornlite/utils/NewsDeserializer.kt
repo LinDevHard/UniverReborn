@@ -10,10 +10,12 @@ import java.lang.reflect.Type
 
 class NewsDeserializer : JsonDeserializer<NewsList> {
     override fun deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): NewsList {
-        Log.d("NewsDeserializer", json.toString())
         val rootJson = json.asJsonArray
         val data = mutableListOf<News>()
-
+        if (rootJson.size() <= 1) {
+            Log.d("NEWS DESERL", rootJson.toString())
+            return NewsList(data)
+        }
         rootJson.map { data += deserializeNews(it, context) }
 
         return NewsList(data.filter { it.body.isNotEmpty() })

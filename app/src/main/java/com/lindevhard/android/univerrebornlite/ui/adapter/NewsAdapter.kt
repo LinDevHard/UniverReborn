@@ -9,12 +9,12 @@ import com.lindevhard.android.univerrebornlite.api.News
 import com.lindevhard.android.univerrebornlite.ui.fragment.NewsFragmentDirections
 import com.lindevhard.android.univerrebornlite.utils.inflate
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.news_list.view.*
+import kotlinx.android.synthetic.main.list_news.view.*
 
 class NewsAdapter(private val items: List<News>) :
         RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val inflateView = parent.inflate(R.layout.news_list, false)
+        val inflateView = parent.inflate(R.layout.list_news, false)
         return ViewHolder(inflateView)
     }
 
