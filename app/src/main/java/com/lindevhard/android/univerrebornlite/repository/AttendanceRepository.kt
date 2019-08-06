@@ -16,11 +16,7 @@ class AttendanceRepository @Inject constructor(remoteClient: Retrofit,
     suspend fun getAttendance(): ApiResponse<AttendanceList> {
         val attendanceResponse = attendanceService.getAttendance(2, 2018)
         Log.d("attendanceRepo", attendanceResponse.toString())
-
-        if (attendanceResponse.data.subjectList.isEmpty())
-            authRepository.retryAuth()
-        Log.d("attendanceRepo", attendanceResponse.toString())
-        return attendanceService.getAttendance(2, 2018)
+        return attendanceResponse
     }
 
 }
