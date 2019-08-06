@@ -5,6 +5,8 @@ import android.content.SharedPreferences
 import android.net.wifi.WifiManager
 import android.preference.PreferenceManager
 import com.lindevhard.android.univerrebornlite.App
+import com.lindevhard.android.univerrebornlite.data.pref.PreferenceStorage
+import com.lindevhard.android.univerrebornlite.data.pref.SharedPreferenceStorage
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -25,4 +27,9 @@ class AppModule {
     @Provides
     fun providesSharedPreference(context: Context): SharedPreferences =
             PreferenceManager.getDefaultSharedPreferences(context)
+
+    @Singleton
+    @Provides
+    fun providesSharedPreferencesStorage(context: Context): PreferenceStorage =
+            SharedPreferenceStorage(context)
 }

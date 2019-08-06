@@ -7,6 +7,7 @@ import com.lindevhard.android.univerrebornlite.api.AttendanceList
 import com.lindevhard.android.univerrebornlite.api.ExamSchedule
 import com.lindevhard.android.univerrebornlite.api.NewsList
 import com.lindevhard.android.univerrebornlite.api.ProfileData
+import com.lindevhard.android.univerrebornlite.repository.AuthLocalDataSource
 import com.lindevhard.android.univerrebornlite.repository.AuthRepository
 import com.lindevhard.android.univerrebornlite.utils.*
 import dagger.Module
@@ -22,12 +23,12 @@ import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
 import javax.security.cert.CertificateException
 
-@Module(includes = [AppModule::class])
+@Module(includes = [AppModule::class, DataBaseModule::class])
 class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideOkHttpClient(prefer: SharedPreferences): OkHttpClient {
+    fun provideOkHttpClient(prefer: SharedPreferences, dataSource: AuthLocalDataSource): OkHttpClient {
         // TODO: Rewrite for use only *.kstu.kz certificate
 
         val trustAllCerts = arrayOf<TrustManager>(object : X509TrustManager {
@@ -57,6 +58,7 @@ class NetworkModule {
                 .connectTimeout(10L, TimeUnit.SECONDS)
                 .writeTimeout(10L, TimeUnit.SECONDS)
                 .readTimeout(30L, TimeUnit.SECONDS)
+                .addInterceptor(AuthorizationInterceptor(dataSource))
                 .addInterceptor(AddCookiesInterceptor(prefer))
                 .addInterceptor(ReceivedCookiesInterceptor(prefer))
                 .sslSocketFactory(sslSocketFactory, trustAllCerts[0] as X509TrustManager)
@@ -84,8 +86,8 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideAuthRepository(retrofit: Retrofit): AuthRepository {
-        return AuthRepository(retrofit)
+    fun provideAuthRepository(retrofit: Retrofit, localDataSource: AuthLocalDataSource): AuthRepository {
+        return AuthRepository(retrofit, localDataSource)
     }
 
 }
