@@ -7,4 +7,6 @@
 
     <color name="colorTitleText">#232F34</color>
     <color name="colorDivider">#000001</color>
+
+    <color name="ic_launcher_background">#FFFFFF</color>
 </resources>
