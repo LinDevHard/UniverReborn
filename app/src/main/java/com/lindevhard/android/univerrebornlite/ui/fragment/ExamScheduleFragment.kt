@@ -12,6 +12,7 @@ import com.lindevhard.android.univerrebornlite.ui.adapter.ExamListAdapter
 import com.lindevhard.android.univerrebornlite.utils.viewModelProvider
 import com.lindevhard.android.univerrebornlite.viewmodel.ExamScheduleViewModel
 import dagger.android.support.DaggerFragment
+import kotlinx.android.synthetic.main.appbar_simple.*
 import kotlinx.android.synthetic.main.fragment_exam_schedule.*
 import javax.inject.Inject
 
@@ -30,9 +31,16 @@ class ExamScheduleFragment : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = viewModelProvider(viewModelFactory)
+
+        toolbar_title.text = "Расписание экзаменов"
         recycleView.layoutManager = LinearLayoutManager(this.context)
         viewModel.exams.observe(this, Observer { item ->
             recycleView.adapter = ExamListAdapter(item.examList)
+            swipe_refresher.isRefreshing = false
         })
+
+        swipe_refresher.setOnRefreshListener {
+            viewModel.loadExams()
+        }
     }
 }
