@@ -35,13 +35,17 @@ class AuthFragment : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = viewModelProvider(viewModelFactory)
+
         login_btn.setOnClickListener {
             viewModel.authRequest(input_login.text.toString(), input_password.text.toString())
         }
 
-        viewModel.login.observe(this, Observer { isLogin ->
+        viewModel.isLogin.observe(this, Observer { isLogin ->
             when (isLogin) {
-                true -> findNavController().navigate(R.id.newsFragment)
+                true -> {
+                    val navDir = AuthFragmentDirections.actionAuthFragmentToAttendanceFragment3()
+                    findNavController().navigate(navDir)
+                }
                 false -> showError(R.string.error_auth_message)
             }
         })
