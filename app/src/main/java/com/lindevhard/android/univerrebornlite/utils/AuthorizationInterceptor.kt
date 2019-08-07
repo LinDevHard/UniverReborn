@@ -27,14 +27,15 @@ class AuthorizationInterceptor @Inject constructor(private val authLocalDataSour
                     val form = FormBody.Builder()
                             .add("login", data.login)
                             .add("password", data.password).build()
-                    val request = originResponse.request().newBuilder().post(form).build()
 
+                    val request = originResponse.request().newBuilder().post(form).build()
                     actualHeaders = chain.proceed(request).headers("Set-Cookie")
                 }
             }
+
             val newRequest = originResponse.request().newBuilder()
                     .url(originUrl)
-            actualHeaders.map { cookies -> newRequest.addHeader("Cookie", cookies) }
+            actualHeaders.map { cookie -> newRequest.addHeader("Cookie", cookie) }
             return chain.proceed(newRequest.build())
         }
         return originResponse
