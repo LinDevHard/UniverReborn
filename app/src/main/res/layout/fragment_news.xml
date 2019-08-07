@@ -5,7 +5,6 @@
     android:layout_height="match_parent">
 
     <include layout="@layout/appbar_simple" />
-
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresher"
         android:layout_width="match_parent"

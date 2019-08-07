@@ -10,6 +10,7 @@ import com.lindevhard.android.univerrebornlite.R
 import com.lindevhard.android.univerrebornlite.utils.viewModelProvider
 import com.lindevhard.android.univerrebornlite.viewmodel.ProfileViewModel
 import dagger.android.support.DaggerFragment
+import kotlinx.android.synthetic.main.appbar_simple.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import javax.inject.Inject
 
@@ -28,6 +29,7 @@ class ProfileFragment : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = viewModelProvider(viewModelFactory)
+        toolbar_title.text = "Профиль"
         viewModel.profile.observe(this, Observer { data ->
             swipe_refresher.isRefreshing = false
 
