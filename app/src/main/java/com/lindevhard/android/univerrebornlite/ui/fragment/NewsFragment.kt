@@ -12,6 +12,7 @@ import com.lindevhard.android.univerrebornlite.ui.adapter.NewsAdapter
 import com.lindevhard.android.univerrebornlite.utils.viewModelProvider
 import com.lindevhard.android.univerrebornlite.viewmodel.NewsViewModel
 import dagger.android.support.DaggerFragment
+import kotlinx.android.synthetic.main.appbar_simple.*
 import kotlinx.android.synthetic.main.fragment_exam_schedule.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import javax.inject.Inject
@@ -32,6 +33,7 @@ class NewsFragment : DaggerFragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = viewModelProvider(viewModelFactory)
         recycleView.layoutManager = LinearLayoutManager(this.context)
+        toolbar_title.text = "Новости"
         viewModel.news.observe(this, Observer { news ->
             swipe_refresher.isRefreshing = false
             recycleView.adapter = NewsAdapter(news)
