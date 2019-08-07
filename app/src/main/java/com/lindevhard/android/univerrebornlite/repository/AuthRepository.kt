@@ -2,6 +2,7 @@ package com.lindevhard.android.univerrebornlite.repository
 
 import android.util.Log
 import com.lindevhard.android.univerrebornlite.api.*
+import com.lindevhard.android.univerrebornlite.data.DataSource.AuthLocalDataSource
 import retrofit2.Retrofit
 import javax.inject.Inject
 

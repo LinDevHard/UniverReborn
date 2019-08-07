@@ -32,9 +32,9 @@ class NewsFragment : DaggerFragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = viewModelProvider(viewModelFactory)
         recycleView.layoutManager = LinearLayoutManager(this.context)
-        viewModel.news.observe(this, Observer { item ->
+        viewModel.news.observe(this, Observer { news ->
             swipe_refresher.isRefreshing = false
-            recycleView.adapter = NewsAdapter(item.news)
+            recycleView.adapter = NewsAdapter(news)
         })
 
         swipe_refresher.setOnRefreshListener {

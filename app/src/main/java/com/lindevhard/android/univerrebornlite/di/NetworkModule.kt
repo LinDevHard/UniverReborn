@@ -7,7 +7,7 @@ import com.lindevhard.android.univerrebornlite.api.AttendanceList
 import com.lindevhard.android.univerrebornlite.api.ExamSchedule
 import com.lindevhard.android.univerrebornlite.api.NewsList
 import com.lindevhard.android.univerrebornlite.api.ProfileData
-import com.lindevhard.android.univerrebornlite.repository.AuthLocalDataSource
+import com.lindevhard.android.univerrebornlite.data.DataSource.AuthLocalDataSource
 import com.lindevhard.android.univerrebornlite.repository.AuthRepository
 import com.lindevhard.android.univerrebornlite.utils.*
 import dagger.Module

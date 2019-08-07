@@ -18,7 +18,6 @@ class NewsDetailViewModel @Inject constructor(private val repo: NewsRepository) 
             runCatching {
                 repo.getNewsById(id)
             }.onSuccess {
-                if (it != null)
                     newsData.value = it
             }
         }

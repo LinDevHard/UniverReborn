@@ -1,6 +1,6 @@
 package com.lindevhard.android.univerrebornlite.utils
 
-import com.lindevhard.android.univerrebornlite.repository.AuthLocalDataSource
+import com.lindevhard.android.univerrebornlite.data.DataSource.AuthLocalDataSource
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
