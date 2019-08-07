@@ -31,5 +31,7 @@
     <string name="title_examSchedule">Экзамены</string>
     <string name="title_news">Новости</string>
     <string name="title_profile">Профиль</string>
+    <string name="login_form_hint">Student ID</string>
+    <string name="logo">LOGO</string>
 
 </resources>
