@@ -30,16 +30,14 @@ class ReceivedCookiesInterceptor(private val prefer: SharedPreferences) : Interc
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
         val originalResponse = chain.proceed(chain.request())
-
         if (originalResponse.headers("Set-Cookie").isNotEmpty()) {
             val cookies = prefer.getStringSet(PREF_COOKIES, HashSet()) as HashSet<String>
-
             originalResponse.headers("Set-Cookie").map { header -> cookies.add(header) }
 
+
             val memes = prefer.edit()
-            memes.clear()
-            memes.putStringSet(PREF_COOKIES, cookies).apply()
-            memes.apply()
+            memes.putStringSet("PREF_COOKIES", cookies).apply()
+            memes.commit()
             Log.d("Cookie interceptor", "memes commit")
         }
 

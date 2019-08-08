@@ -33,5 +33,6 @@
     <string name="title_profile">Профиль</string>
     <string name="login_form_hint">Student ID</string>
     <string name="logo">LOGO</string>
+    <string name="detail_btn">Подробнее</string>
 
 </resources>

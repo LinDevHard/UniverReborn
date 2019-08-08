@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/appBar"
     android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize"
+    android:layout_height="wrap_content"
     android:background="@color/white"
     android:fitsSystemWindows="true">
 
@@ -13,13 +13,26 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/white"
         app:layout_collapseMode="pin"
-        app:layout_scrollFlags="scroll|snap">
-
+        app:layout_scrollFlags="enterAlways|scroll|snap">
         <TextView
             android:id="@+id/toolbar_title"
             style="@style/TextAppearance.UniverReborn.ToolbarTitle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center" />
+            android:gravity="center"
+            android:text="@string/title_attendance"/>
     </androidx.appcompat.widget.Toolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/session_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_marginBottom="@dimen/margin_normal"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:padding="8dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        app:layoutManager="LinearLayoutManager" />
 </com.google.android.material.appbar.AppBarLayout>

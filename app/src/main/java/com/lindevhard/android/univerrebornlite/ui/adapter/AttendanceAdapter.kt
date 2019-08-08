@@ -8,13 +8,13 @@ import androidx.transition.TransitionManager
 import com.lindevhard.android.univerrebornlite.api.Attendance
 import com.lindevhard.android.univerrebornlite.utils.inflate
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.list_news.view.title
-import kotlinx.android.synthetic.main.list_subject.view.*
+import kotlinx.android.synthetic.main.item_news.view.title
+import kotlinx.android.synthetic.main.item_subject.view.*
 
 
 class AttendanceAdapter(private val items: List<Attendance>) : RecyclerView.Adapter<AttendanceAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val inflateView = parent.inflate(com.lindevhard.android.univerrebornlite.R.layout.list_subject, false)
+        val inflateView = parent.inflate(com.lindevhard.android.univerrebornlite.R.layout.item_subject, false)
         return ViewHolder(inflateView)
     }
 

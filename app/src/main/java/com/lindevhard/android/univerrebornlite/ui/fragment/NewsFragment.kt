@@ -13,8 +13,8 @@ import com.lindevhard.android.univerrebornlite.utils.viewModelProvider
 import com.lindevhard.android.univerrebornlite.viewmodel.NewsViewModel
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.appbar_simple.*
-import kotlinx.android.synthetic.main.fragment_exam_schedule.*
-import kotlinx.android.synthetic.main.fragment_profile.*
+import kotlinx.android.synthetic.main.fragment_news.*
+
 import javax.inject.Inject
 
 class NewsFragment : DaggerFragment() {
