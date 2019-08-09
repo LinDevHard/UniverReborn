@@ -18,6 +18,7 @@ class AttendanceAdapter(private val items: List<Attendance>) : RecyclerView.Adap
         return ViewHolder(inflateView)
     }
 
+    fun getData() = items
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

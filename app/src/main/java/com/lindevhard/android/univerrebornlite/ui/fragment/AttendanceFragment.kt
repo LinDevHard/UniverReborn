@@ -29,6 +29,7 @@ class AttendanceFragment : DaggerFragment(), RecyclerView.RecyclerListener {
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var viewModel: AttendanceViewModel
 
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_attendance, container, false)
@@ -39,7 +40,6 @@ class AttendanceFragment : DaggerFragment(), RecyclerView.RecyclerListener {
         viewModel = viewModelProvider(viewModelFactory)
         toolbar_title.text = "Журнал"
         recycleView.layoutManager = LinearLayoutManager(this.context)
-
         viewModel.subjects.observe(this, Observer { item ->
             swipe_refresher.isRefreshing = false
             recycleView.adapter = AttendanceAdapter(item.subjectList)
@@ -47,7 +47,9 @@ class AttendanceFragment : DaggerFragment(), RecyclerView.RecyclerListener {
 
         viewModel.session.observe(this, Observer {item ->
             Log.d("AttendanceFragment", item.toString())
-            session_indicator.adapter = SessionAdapter(item)
+            session_indicator.adapter = SessionAdapter(item) {
+                viewModel.loadSession(it.currentYear, it.currentSemester)
+            }
         })
 
         swipe_refresher.setOnRefreshListener {

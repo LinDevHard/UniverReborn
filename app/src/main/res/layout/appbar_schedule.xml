@@ -25,14 +25,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/session_indicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_normal"
-        android:layout_marginBottom="@dimen/margin_normal"
-        android:layout_marginStart="@dimen/margin_normal"
-        android:layout_marginEnd="@dimen/margin_normal"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
         android:padding="8dp"
-        android:background="@color/white"
         android:orientation="horizontal"
         app:layoutManager="LinearLayoutManager" />
 </com.google.android.material.appbar.AppBarLayout>

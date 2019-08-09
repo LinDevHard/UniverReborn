@@ -7,6 +7,9 @@ import retrofit2.http.POST
 interface AttendanceApi {
     @FormUrlEncoded
     @POST("/student/attendance")
-    suspend fun getAttendance(@Field("semester") semester: Int,
-                              @Field("year") year: Int): ApiResponse<AttendanceList>
+    suspend fun getAttendanceByYearSemester(@Field("year") year: Int,
+                                            @Field("semester") semester: Int): ApiResponse<AttendanceList>
+
+    @POST("/student/attendance")
+    suspend fun getAttendance(): ApiResponse<AttendanceList>
 }

@@ -11,7 +11,8 @@ import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_session_indicator.view.*
 
 
-class SessionAdapter(private val items: List<Session>) : RecyclerView.Adapter<SessionAdapter.ViewHolder>() {
+class SessionAdapter(private val items: List<Session>, val listener: (Session) -> Unit) :
+        RecyclerView.Adapter<SessionAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflateView = parent.inflate(R.layout.item_session_indicator, false)
@@ -20,19 +21,17 @@ class SessionAdapter(private val items: List<Session>) : RecyclerView.Adapter<Se
 
     override fun getItemCount(): Int = items.size
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(items[position])
+        holder.bind(items[position], listener)
     }
 
 
     class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
         private var checkedTextView: CheckedTextView = containerView.title
 
-        init {
-            checkedTextView.setOnClickListener{ checkedTextView.isChecked = true}
-        }
-        fun bind(session: Session){
-            if (session.isCurrent) checkedTextView.isChecked = true
-            checkedTextView.text = "${session.currentNumber} сессия"
+
+        fun bind(item: Session, listener: (Session) -> Unit) = with(checkedTextView) {
+            text = String.format(resources.getString(R.string.toolbar_session_indicator), item.currentNumber)
+            setOnClickListener { listener(item) }
         }
 
 

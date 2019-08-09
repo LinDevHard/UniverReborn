@@ -12,12 +12,11 @@ class AttendanceRepository @Inject constructor(remoteClient: Retrofit) {
     private val attendanceService = remoteClient.create(AttendanceApi::class.java)
     private val sessionService = remoteClient.create(SemesterApi::class.java)
 
-    suspend fun getAttendance(): ApiResponse<AttendanceList> {
-        val attendanceResponse = attendanceService.getAttendance(2, 2018)
-        return attendanceResponse
-    }
+    suspend fun getAttendance(): ApiResponse<AttendanceList> =
+            attendanceService.getAttendance()
 
-    private suspend fun getActualSession() = sessionService.getActualSemester()
+    private suspend fun getActualSession() =
+            sessionService.getActualSemester()
 
     suspend fun getActualSessionList(): List<Session> {
         val sessionList: MutableList<Session> = mutableListOf()
@@ -35,4 +34,7 @@ class AttendanceRepository @Inject constructor(remoteClient: Retrofit) {
         }
         return sessionList
     }
+
+    suspend fun getAttendanceBySemester(year: Int, semester: Int) =
+            attendanceService.getAttendanceByYearSemester(year, semester)
 }

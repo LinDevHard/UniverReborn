@@ -45,4 +45,17 @@ class AttendanceViewModel @Inject constructor(private val repo: AttendanceReposi
             }
         }
     }
+
+    fun loadSession(currentYear: Int, currentSemester: Int) {
+        viewModelScope.launch {
+            runCatching {
+                repo.getAttendanceBySemester(currentYear, currentSemester)
+            }.onSuccess {
+                attendanceData.value = it.data
+            }.onFailure {
+                Log.d("AttendanceViewModel", it.message)
+            }
+        }
+    }
 }
+

@@ -35,4 +35,5 @@
     <string name="logo">LOGO</string>
     <string name="detail_btn">Подробнее</string>
 
+    <string name="toolbar_session_indicator">%d Сессия</string>
 </resources>
