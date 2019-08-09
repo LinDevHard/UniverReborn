@@ -1,7 +1,6 @@
 package com.lindevhard.android.univerrebornlite.utils
 
 import android.content.SharedPreferences
-import android.util.Log
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException
@@ -16,7 +15,6 @@ class AddCookiesInterceptor(private val prefer: SharedPreferences) : Interceptor
         val preferences = prefer.getStringSet(PREF_COOKIES, HashSet()) as HashSet<String>
 
         preferences.map { cookie -> builder.addHeader("Cookie", cookie) }
-
         return chain.proceed(builder.build())
     }
 
@@ -34,11 +32,8 @@ class ReceivedCookiesInterceptor(private val prefer: SharedPreferences) : Interc
             val cookies = prefer.getStringSet(PREF_COOKIES, HashSet()) as HashSet<String>
             originalResponse.headers("Set-Cookie").map { header -> cookies.add(header) }
 
-
             val memes = prefer.edit()
-            memes.putStringSet("PREF_COOKIES", cookies).apply()
-            memes.commit()
-            Log.d("Cookie interceptor", "memes commit")
+            memes.putStringSet(PREF_COOKIES, cookies).apply()
         }
 
         return originalResponse

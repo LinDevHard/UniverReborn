@@ -3,7 +3,6 @@ package com.lindevhard.android.univerrebornlite.di
 import android.content.Context
 import android.content.SharedPreferences
 import android.net.wifi.WifiManager
-import android.preference.PreferenceManager
 import com.lindevhard.android.univerrebornlite.App
 import com.lindevhard.android.univerrebornlite.data.pref.PreferenceStorage
 import com.lindevhard.android.univerrebornlite.data.pref.SharedPreferenceStorage
@@ -26,7 +25,7 @@ class AppModule {
     @Singleton
     @Provides
     fun providesSharedPreference(context: Context): SharedPreferences =
-            PreferenceManager.getDefaultSharedPreferences(context)
+            context.getSharedPreferences("shared", Context.MODE_PRIVATE)
 
     @Singleton
     @Provides

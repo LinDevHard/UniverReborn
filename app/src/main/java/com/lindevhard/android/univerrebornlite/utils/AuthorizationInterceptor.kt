@@ -32,7 +32,6 @@ class AuthorizationInterceptor @Inject constructor(private val authLocalDataSour
                     actualHeaders = chain.proceed(request).headers("Set-Cookie")
                 }
             }
-
             val newRequest = originResponse.request().newBuilder()
                     .url(originUrl)
             actualHeaders.map { cookie -> newRequest.addHeader("Cookie", cookie) }
