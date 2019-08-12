@@ -24,13 +24,10 @@ class ProfileViewModel @Inject constructor(private val repository: ProfileReposi
             runCatching {
                 repository.getUserProfile()
             }.onSuccess {
-                if (it.code == 0) {
-                    profileData.value = it.data
-                } else {
-                    Log.d(TAG, "Error")
-                }
+                profileData.value = it
+            }.onFailure {
+                Log.d(TAG, it.message)
             }
         }
     }
-
 }
