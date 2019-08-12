@@ -58,6 +58,7 @@ class NetworkModule {
                 .connectTimeout(10L, TimeUnit.SECONDS)
                 .writeTimeout(10L, TimeUnit.SECONDS)
                 .readTimeout(30L, TimeUnit.SECONDS)
+                .cache(null)
                 .addInterceptor(AuthorizationInterceptor(dataSource))
                 .addInterceptor(AddCookiesInterceptor(prefer))
                 .addInterceptor(ReceivedCookiesInterceptor(prefer))

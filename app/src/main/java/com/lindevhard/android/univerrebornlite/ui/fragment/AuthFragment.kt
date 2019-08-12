@@ -35,7 +35,6 @@ class AuthFragment : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = viewModelProvider(viewModelFactory)
-
         login_btn.setOnClickListener {
             viewModel.authRequest(input_login.text.toString(), input_password.text.toString())
         }

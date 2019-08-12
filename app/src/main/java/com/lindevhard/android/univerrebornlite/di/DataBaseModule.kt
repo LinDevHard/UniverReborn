@@ -2,8 +2,7 @@ package com.lindevhard.android.univerrebornlite.di
 
 import androidx.room.Room
 import com.lindevhard.android.univerrebornlite.App
-import com.lindevhard.android.univerrebornlite.data.DataSource.AuthLocalDataSource
-import com.lindevhard.android.univerrebornlite.data.DataSource.NewsLocalDataSource
+import com.lindevhard.android.univerrebornlite.data.DataSource.*
 import com.lindevhard.android.univerrebornlite.database.AppDatabase
 import dagger.Module
 import dagger.Provides
@@ -26,4 +25,20 @@ class DataBaseModule {
     @Singleton
     fun provideNewsDataSource(appDatabase: AppDatabase): NewsLocalDataSource =
             NewsLocalDataSource(appDatabase.newsDataDao)
+
+    @Provides
+    @Singleton
+    fun provideAttendanceDataSource(appDatabase: AppDatabase): AttendanceLocalDataSource =
+            AttendanceLocalDataSource(appDatabase.attendanceDao)
+
+
+    @Provides
+    @Singleton
+    fun provideSessionDataSource(appDatabase: AppDatabase): SessionLocalDataSource =
+            SessionLocalDataSource(appDatabase.sessionDao)
+
+    @Provides
+    @Singleton
+    fun provideProfileDataSource(appDatabase: AppDatabase): ProfileLocalDataSource =
+            ProfileLocalDataSource(appDatabase.profileDao)
 }
