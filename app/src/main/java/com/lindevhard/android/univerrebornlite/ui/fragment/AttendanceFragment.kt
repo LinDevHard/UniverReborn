@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lindevhard.android.univerrebornlite.R
@@ -16,7 +17,7 @@ import com.lindevhard.android.univerrebornlite.ui.adapter.SubjectRowDiffCallback
 import com.lindevhard.android.univerrebornlite.utils.viewModelProvider
 import com.lindevhard.android.univerrebornlite.viewmodel.AttendanceViewModel
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.main.appbar_schedule.*
+import kotlinx.android.synthetic.main.appbar_with_session.*
 import kotlinx.android.synthetic.main.fragment_attendance.*
 import javax.inject.Inject
 
@@ -44,6 +45,10 @@ class AttendanceFragment : DaggerFragment(), RecyclerView.RecyclerListener {
         swipe_refresher.isRefreshing = true
         val mainAdapter = AttendanceAdapter(listOf())
         recycleView.adapter = mainAdapter
+        toolbar_title.setText(R.string.title_attendance)
+
+        session_indicator.addItemDecoration(DividerItemDecoration(session_indicator.context,
+                DividerItemDecoration.HORIZONTAL))
 
         viewModel.subjects.observe(this, Observer { item ->
             val diff = DiffUtil.calculateDiff(SubjectRowDiffCallback(
@@ -55,6 +60,7 @@ class AttendanceFragment : DaggerFragment(), RecyclerView.RecyclerListener {
 
             swipe_refresher.isRefreshing = false
         })
+
 
         viewModel.session.observe(this, Observer {item ->
             session_indicator.adapter = SessionAdapter(item) {
@@ -68,5 +74,4 @@ class AttendanceFragment : DaggerFragment(), RecyclerView.RecyclerListener {
         }
 
     }
-
 }
