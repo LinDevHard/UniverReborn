@@ -19,8 +19,7 @@
             style="@style/TextAppearance.UniverReborn.ToolbarTitle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="@string/title_attendance"/>
+            android:gravity="center" />
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -28,6 +27,8 @@
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:padding="8dp"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
         android:orientation="horizontal"
         app:layoutManager="LinearLayoutManager" />
 </com.google.android.material.appbar.AppBarLayout>
