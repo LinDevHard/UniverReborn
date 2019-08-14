@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.lindevhard.android.univerrebornlite.R
+import com.lindevhard.android.univerrebornlite.utils.hideKeyboard
 import com.lindevhard.android.univerrebornlite.utils.showError
 import com.lindevhard.android.univerrebornlite.utils.viewModelProvider
 import com.lindevhard.android.univerrebornlite.viewmodel.AuthViewModel
@@ -36,6 +37,7 @@ class AuthFragment : DaggerFragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = viewModelProvider(viewModelFactory)
         login_btn.setOnClickListener {
+            it.hideKeyboard()
             viewModel.authRequest(input_login.text.toString(), input_password.text.toString())
         }
 

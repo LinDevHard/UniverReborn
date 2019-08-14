@@ -4,7 +4,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login_button">Login</string>
-    <string name="pass_hint">Univer Password</string>
+    <string name="login_form_hint">Student ID</string>
+    <string name="pass_hint">Password</string>
     <string name="user_profile">UserProfile</string>
     <string name="error_auth_message">Invalid username or password</string>
     <string name="demo_card_text">TEST</string>
@@ -31,7 +32,6 @@
     <string name="title_examSchedule">Экзамены</string>
     <string name="title_news">Новости</string>
     <string name="title_profile">Профиль</string>
-    <string name="login_form_hint">Student ID</string>
     <string name="logo">LOGO</string>
     <string name="detail_btn">Подробнее</string>
 

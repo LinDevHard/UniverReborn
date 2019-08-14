@@ -1,11 +1,13 @@
 package com.lindevhard.android.univerrebornlite.utils
 
+import android.content.Context
 import android.os.Build
 import android.text.Html
 import android.text.Spanned
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
@@ -69,4 +71,12 @@ fun String.toSpanned(): Spanned {
         @Suppress("DEPRECATION")
         return Html.fromHtml(this)
     }
+}
+
+/**
+ * Extension function for hide virtual keyboard
+ */
+fun View.hideKeyboard() {
+    val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    imm.hideSoftInputFromWindow(windowToken, 0)
 }

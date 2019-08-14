@@ -56,5 +56,4 @@ class AuthViewModel @Inject constructor(
         const val ALREADY_AUTHORIZED = 1
         const val INCORRECT_LOGIN = 2
     }
-
 }
