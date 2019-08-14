@@ -14,6 +14,10 @@
         android:icon="@drawable/ic_insert_invitation_black_24dp"
         android:title="@string/title_examSchedule" />
     <item
+        android:id="@+id/ukmdFragment"
+        android:icon="@drawable/ic_baseline_attachment_24px"
+        android:title="@string/ukmd_title" />
+    <item
         android:id="@+id/profileFragment"
         android:icon="@drawable/ic_person_black_24dp"
         android:title="@string/title_profile" />

@@ -28,6 +28,9 @@ abstract class FragmentBuilderModule {
     @ContributesAndroidInjector
     internal abstract fun contibutesAttendanceFragment(): AttendanceFragment
 
+    @ContributesAndroidInjector
+    internal abstract fun contibutesUkmdFragment(): UkmdFragment
+
     @Binds
     @IntoMap
     @ViewModelKey(AuthViewModel::class)
@@ -57,4 +60,9 @@ abstract class FragmentBuilderModule {
     @IntoMap
     @ViewModelKey(AttendanceViewModel::class)
     internal abstract fun bindAttendanceViewModel(viewModel: AttendanceViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(UkmdViewModel::class)
+    internal abstract fun bindUkmdViewModel(viewModel: UkmdViewModel): ViewModel
 }

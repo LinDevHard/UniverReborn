@@ -60,5 +60,12 @@
             android:id="@+id/action_attendanceFragment_to_examScheduleFragment"
             app:destination="@id/examScheduleFragment"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_attendanceFragment_to_ukmdFragment"
+            app:destination="@id/ukmdFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/ukmdFragment"
+        android:name="com.lindevhard.android.univerrebornlite.ui.fragment.UkmdFragment"
+        android:label="UkmdFragment" />
 </navigation>
