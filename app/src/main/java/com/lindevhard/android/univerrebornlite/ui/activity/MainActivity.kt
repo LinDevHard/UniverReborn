@@ -39,6 +39,7 @@ class MainActivity : DaggerAppCompatActivity() {
             when (destination.id) {
                 R.id.authFragment -> hideBottomNavigation()
                 R.id.newsDetailFragment -> hideBottomNavigation()
+                R.id.umkdDetailFragment -> hideBottomNavigation()
                 else -> showBottomNavigation()
             }
         }

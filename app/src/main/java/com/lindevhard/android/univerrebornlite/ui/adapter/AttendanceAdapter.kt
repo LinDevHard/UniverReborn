@@ -12,7 +12,8 @@ import kotlinx.android.synthetic.main.item_news.view.title
 import kotlinx.android.synthetic.main.item_subject.view.*
 
 
-class AttendanceAdapter(var items: List<Attendance>) : RecyclerView.Adapter<AttendanceAdapter.ViewHolder>() {
+class AttendanceAdapter(var items: List<Attendance>) :
+        RecyclerView.Adapter<AttendanceAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflateView = parent.inflate(com.lindevhard.android.univerrebornlite.R.layout.item_subject, false)
         return ViewHolder(inflateView)

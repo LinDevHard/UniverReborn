@@ -66,6 +66,32 @@
     </fragment>
     <fragment
         android:id="@+id/ukmdFragment"
-        android:name="com.lindevhard.android.univerrebornlite.ui.fragment.UkmdFragment"
-        android:label="UkmdFragment" />
+        android:name="com.lindevhard.android.univerrebornlite.ui.fragment.UmkdFragment"
+        android:label="UkmdFragment">
+        <action
+            android:id="@+id/action_ukmdFragment_to_umkdDetailFragment"
+            app:destination="@id/umkdDetailFragment">
+            <argument
+                android:name="fileId"
+                android:defaultValue="0L"
+                app:argType="long" />
+            <argument
+                android:name="title"
+                android:defaultValue="UMKD"
+                app:argType="string" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/umkdDetailFragment"
+        android:name="com.lindevhard.android.univerrebornlite.ui.fragment.UmkdDetailFragment"
+        android:label="UmkdDetailFragment">
+        <argument
+            android:name="fileId"
+            android:defaultValue="0L"
+            app:argType="long" />
+        <argument
+            android:name="title"
+            android:defaultValue="UMKD"
+            app:argType="string" />
+    </fragment>
 </navigation>
