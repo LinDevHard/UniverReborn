@@ -41,7 +41,9 @@ class UmkdDetailFragment : DaggerFragment() {
 
         viewModel.findFilesById(fileId)
         viewModel.umkd.observe(this, Observer {
-            recycleView.adapter = UmkdFilesAdapter(it)
+            recycleView.adapter = UmkdFilesAdapter(it) { file ->
+                viewModel.getUmkdFile(file.fname, file.itemId, fileId)
+            }
         })
 
     }

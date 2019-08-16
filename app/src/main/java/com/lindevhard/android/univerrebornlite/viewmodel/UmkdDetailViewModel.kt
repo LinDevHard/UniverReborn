@@ -25,4 +25,16 @@ class UmkdDetailViewModel @Inject constructor(private val repo: UkmdRepository) 
             }
         }
     }
+
+    fun getUmkdFile(fileName: String, itemId: Long, subjectId: Long) {
+        viewModelScope.launch {
+            runCatching {
+                repo.getUmkdFile(fileName, itemId, subjectId)
+            }.onSuccess {
+                Log.d("Download", "OK")
+            }.onFailure {
+                Log.d("UMKD DETAIL ", it.message)
+            }
+        }
+    }
 }

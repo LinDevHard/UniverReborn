@@ -10,7 +10,7 @@ import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_umkd_files.view.*
 
 
-class UmkdFilesAdapter(var items: List<UmkdFiles>) :
+class UmkdFilesAdapter(var items: List<UmkdFiles>, val listener: (UmkdFiles) -> Unit) :
         RecyclerView.Adapter<UmkdFilesAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -21,15 +21,13 @@ class UmkdFilesAdapter(var items: List<UmkdFiles>) :
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(items[position])
+        holder.bind(items[position], listener)
     }
 
     class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
-        init {
-        }
 
-        fun bind(ukmd: UmkdFiles) {
+        fun bind(ukmd: UmkdFiles, listener: (UmkdFiles) -> Unit) {
             containerView.type.text = ukmd.type
             containerView.title.text = ukmd.fname
         }

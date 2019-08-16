@@ -2,6 +2,7 @@ package com.lindevhard.android.univerrebornlite.utils
 
 import android.content.Context
 import android.os.Build
+import android.os.Environment
 import android.text.Html
 import android.text.Spanned
 import android.view.LayoutInflater
@@ -79,4 +80,15 @@ fun String.toSpanned(): Spanned {
 fun View.hideKeyboard() {
     val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     imm.hideSoftInputFromWindow(windowToken, 0)
+}
+
+/* Checks if external storage is available for read and write */
+fun isExternalStorageWritable(): Boolean {
+    return Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED
+}
+
+/* Checks if external storage is available to at least read */
+fun isExternalStorageReadable(): Boolean {
+    return Environment.getExternalStorageState() in
+            setOf(Environment.MEDIA_MOUNTED, Environment.MEDIA_MOUNTED_READ_ONLY)
 }
